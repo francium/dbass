@@ -10,5 +10,6 @@ module.exports = {
     bracketSpacing: false,
     jsxBracketSameLine: false,
     arrowParens: "avoid",
+    requirePragma: false,
     endOfLine: "lf",
 };

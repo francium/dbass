@@ -1,14 +1,41 @@
-<div class="app-results">
-    <div class="app-result-row" *ngFor="let row of data.data; index as i">
-        <div class="app-result-row-column app-result-row-result-index-column">
-            <span>{{ i + 1 }}</span>
+<ng-container [ngSwitch]="data?.status">
+    <ng-container *ngSwitchCase="'ok'">
+        <div class="app-results">
+            <div class="app-result-row app-results-header-row">
+                <div class="app-result-row-column app-result-row-result-index-column">
+                    <!-- place holder -->
+                </div>
+                <div
+                    class="app-result-row-column"
+                    *ngFor="let columnLabel of okData.columnLabels"
+                    [attr.title]="columnLabel"
+                >
+                    {{ columnLabel }}
+                </div>
+            </div>
+            <div class="app-result-row" *ngFor="let row of okData.rows; index as i">
+                <div class="app-result-row-column app-result-row-result-index-column">
+                    <span>{{ i + 1 }}</span>
+                </div>
+                <div
+                    class="app-result-row-column"
+                    *ngFor="let column of row"
+                    [attr.title]="column"
+                >
+                    {{ column }}
+                </div>
+            </div>
         </div>
-        <div
-            class="app-result-row-column"
-            *ngFor="let column of row"
-            [attr.title]="column"
-        >
-            {{ column }}
-        </div>
-    </div>
-</div>
+        <app-data-panel-status-bar [numResults]="okData.rows.length">
+        </app-data-panel-status-bar>
+    </ng-container>
+    <ng-container *ngSwitchCase="'loading'">
+        <div class="app-no-results-placeholder-message">loading...</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'error'">
+        <div class="app-no-results-placeholder-message">Failed to run query</div>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <div class="app-no-results-placeholder-message"></div>
+    </ng-container>
+</ng-container>

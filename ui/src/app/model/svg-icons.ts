@@ -1,3 +1,5 @@
+import {Status} from ".";
+
 export const loading = `
 <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -115,3 +117,14 @@ export const cross = `
     </g>
 </svg>
 `;
+
+export function statusToSvgIcon(status: Status): string {
+    switch (status) {
+        case "error":
+            return cross;
+        case "ok":
+            return checkmark;
+        case "processing":
+            return loading;
+    }
+}

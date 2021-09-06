@@ -44,11 +44,11 @@
     .app-run-button {
         border: 1px solid black;
         border-radius: 4px;
-        background: #f86d09;
+        background: #e6e1dc;
         color: black;
 
         &:hover {
-            background: #f4802d;
+            background: white;
             cursor: pointer;
         }
     }
@@ -68,7 +68,7 @@
         outline: 0;
         border: 1px solid black;
         border-radius: 4px;
-        background: #f86d09;
+        background: #e6e1dc;
         color: black;
         appearance: none;
         -webkit-appearance: none;
@@ -80,7 +80,7 @@
     .app-custom-select select:hover,
     .app-custom-select select:focus {
         color: black;
-        background: #f4802d;
+        background: white;
     }
     .app-custom-select select:disabled {
         opacity: 0.5;

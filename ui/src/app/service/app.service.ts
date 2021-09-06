@@ -10,7 +10,7 @@ import {SqlQueryAnalysisService} from "./sql-query-analysis.service";
     providedIn: "root",
 })
 export class AppService {
-    private readonly editorStatusSubject$ = new BehaviorSubject<Status>("ready");
+    private readonly editorStatusSubject$ = new BehaviorSubject<Status>("ok");
     public readonly editorStatus$ = this.editorStatusSubject$.asObservable();
 
     private readonly dataPanelStateSubject$ = new BehaviorSubject<DataPanelState>(
@@ -26,17 +26,30 @@ export class AppService {
     public editorTextChange(value: string): void {
         this.editorStatusSubject$.next("processing");
         this.sqlQueryAnalysisService.analyze(value).then(result => {
-            const status = result.valid ? "ready" : "error";
+            const status = result.valid ? "ok" : "error";
             this.editorStatusSubject$.next(status);
         });
     }
 
     public runQuery(query: string): void {
-        this.apiService.executeSqlQuery(query).subscribe(response => {
-            this.dataPanelStateSubject$.next({
-                status: response.status === "ok" ? "ready" : "error",
-                data: response.result,
-            });
+        this.dataPanelStateSubject$.next({
+            status: "loading",
         });
+        this.apiService.executeSqlQuery(query).subscribe(
+            response => {
+                if (response.status === "ok") {
+                    this.dataPanelStateSubject$.next({
+                        status: response.status,
+                        columnLabels: response.data.columnLabels,
+                        rows: response.data.rows,
+                    });
+                }
+            },
+            () => {
+                this.dataPanelStateSubject$.next({
+                    status: "error",
+                });
+            },
+        );
     }
 }

@@ -31,7 +31,7 @@ export class EditorComponent implements AfterViewInit, OnDestroy {
     set status(status: Status) {
         this.status$.next(status);
     }
-    private readonly status$ = new BehaviorSubject<Status>("ready");
+    private readonly status$ = new BehaviorSubject<Status>("ok");
 
     @Output("textChange")
     textChange$ = new EventEmitter<string>();

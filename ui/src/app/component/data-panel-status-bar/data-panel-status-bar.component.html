@@ -1,1 +1,9 @@
-<p>data-panel-status-bar works!</p>
+<app-basic-status-bar>
+    <ng-container statusBarLeftGroup>
+        <div class="app-status-icon" [innerHTML]="statusIcon | safeHtml"></div>
+        <div class="app-status-message" [innerText]="message || ''"></div>
+    </ng-container>
+    <ng-container statusBarRightGroup *ngIf="numResults !== undefined">
+        {{ numResults }} results
+    </ng-container>
+</app-basic-status-bar>

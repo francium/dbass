@@ -10,3 +10,10 @@
     color: #e6e1dca0;
     user-select: none;
 }
+
+.app-status-left-group,
+.app-status-right-group {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}

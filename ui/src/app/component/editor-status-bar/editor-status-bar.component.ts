@@ -1,12 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
 
 import {CursorPosition, defaultCursorPosition, Status} from "@app/model";
-
-import {
-    checkmark as checkmarkSvg,
-    loading as loadingSvg,
-    cross as crossSvg,
-} from "./svg-icons";
+import {statusToSvgIcon} from "@app/model/svg-icons";
 
 @Component({
     selector: "app-editor-status-bar",
@@ -26,16 +21,5 @@ export class EditorStatusBarComponent {
 
     get statusIcon(): string {
         return this.status ? statusToSvgIcon(this.status) : "";
-    }
-}
-
-function statusToSvgIcon(status: Status): string {
-    switch (status) {
-        case "error":
-            return crossSvg;
-        case "ready":
-            return checkmarkSvg;
-        case "processing":
-            return loadingSvg;
     }
 }

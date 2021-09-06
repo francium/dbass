@@ -1,4 +1,7 @@
-import {Component, ChangeDetectionStrategy} from "@angular/core";
+import {Component, ChangeDetectionStrategy, Input} from "@angular/core";
+
+import {Status} from "@app/model";
+import {statusToSvgIcon} from "@app/model/svg-icons";
 
 @Component({
     selector: "app-data-panel-status-bar",
@@ -6,4 +9,17 @@ import {Component, ChangeDetectionStrategy} from "@angular/core";
     styleUrls: ["./data-panel-status-bar.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DataPanelStatusBarComponent {}
+export class DataPanelStatusBarComponent {
+    @Input()
+    status?: Status;
+
+    @Input()
+    message?: string;
+
+    @Input()
+    numResults?: number;
+
+    get statusIcon(): string {
+        return this.status ? statusToSvgIcon(this.status) : "";
+    }
+}

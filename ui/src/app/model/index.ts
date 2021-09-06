@@ -2,7 +2,7 @@ import {snowfakeId} from "@lib/snowflake-id";
 
 export type Int = number;
 
-export type Status = "processing" | "ready" | "error";
+export type Status = "processing" | "ok" | "error";
 
 export type CursorPosition = {
     row: number;
@@ -29,11 +29,44 @@ export type SqlQueryAnalysisResult = {
     valid: boolean;
 };
 
-export type DataPanelState = {
-    status: Status;
-    data: any[];
+export type DataPanelIdleState = {
+    status: "idle";
 };
+export type DataPanelLoadingState = {
+    status: "loading";
+};
+export type DataPanelOkState = {
+    status: "ok";
+    columnLabels: string[];
+    rows: ApiQueryRow[];
+};
+export type DataPanelErrorState = {
+    status: "error";
+};
+export type DataPanelState =
+    | DataPanelIdleState
+    | DataPanelLoadingState
+    | DataPanelOkState
+    | DataPanelErrorState;
 export const defaultDataPanelState: DataPanelState = {
-    status: "ready",
-    data: [],
+    status: "idle",
 };
+
+// API ////////////////////////////////////////////////////////////////////////
+
+export type ApiQueryRow = Array<string | number>;
+export type ApiQueryData = {
+    columnLabels: string[];
+    rows: ApiQueryRow[];
+};
+
+export type ApiQuerySuccessfulExecution = {
+    status: "ok";
+    data: ApiQueryData;
+};
+export type ApiQueryErrorExecution = {
+    status: "error";
+};
+export type ApiQueryExecutionResponse =
+    | ApiQuerySuccessfulExecution
+    | ApiQueryErrorExecution;

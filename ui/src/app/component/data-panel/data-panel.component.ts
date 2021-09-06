@@ -1,6 +1,4 @@
 import {Component, ChangeDetectionStrategy, Input} from "@angular/core";
-import {Subject} from "rxjs";
-import {filter} from "rxjs/operators";
 
 import {
     DataPanelErrorState,

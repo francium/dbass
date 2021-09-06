@@ -10,19 +10,19 @@
                     *ngFor="let columnLabel of okData.columnLabels"
                     [attr.title]="columnLabel"
                 >
-                    {{ columnLabel }}
+                    {{columnLabel}}
                 </div>
             </div>
             <div class="app-result-row" *ngFor="let row of okData.rows; index as i">
                 <div class="app-result-row-column app-result-row-result-index-column">
-                    <span>{{ i + 1 }}</span>
+                    <span>{{i + 1}}</span>
                 </div>
                 <div
                     class="app-result-row-column"
                     *ngFor="let column of row"
                     [attr.title]="column"
                 >
-                    {{ column }}
+                    {{column}}
                 </div>
             </div>
         </div>

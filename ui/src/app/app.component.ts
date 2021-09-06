@@ -6,7 +6,7 @@ import {
 } from "@angular/core";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 import {combineLatest, Subject} from "rxjs";
-import {debounceTime, map, switchMap, tap, withLatestFrom} from "rxjs/operators";
+import {debounceTime, map, tap, withLatestFrom} from "rxjs/operators";
 
 import {AppService} from "./service/app.service";
 

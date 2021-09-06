@@ -29,11 +29,19 @@
         <app-data-panel-status-bar [numResults]="okData.rows.length">
         </app-data-panel-status-bar>
     </ng-container>
-    <ng-container *ngSwitchCase="'loading'">
-        <div class="app-no-results-placeholder-message">loading...</div>
+    <ng-container *ngSwitchCase="'processing'">
+        <div class="app-no-results-placeholder-message">
+            <app-status-icon
+                [status]="processingData.status"
+                height="4rem"
+            ></app-status-icon>
+        </div>
     </ng-container>
     <ng-container *ngSwitchCase="'error'">
-        <div class="app-no-results-placeholder-message">Failed to run query</div>
+        <div class="app-no-results-placeholder-message app-error-message">
+            <app-status-icon [status]="errorData.status" height="4rem"></app-status-icon>
+            Failed to run query
+        </div>
     </ng-container>
     <ng-container *ngSwitchDefault>
         <div class="app-no-results-placeholder-message"></div>

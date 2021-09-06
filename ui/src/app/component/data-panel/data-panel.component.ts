@@ -3,7 +3,7 @@ import {Component, ChangeDetectionStrategy, Input} from "@angular/core";
 import {
     DataPanelErrorState,
     DataPanelIdleState,
-    DataPanelLoadingState,
+    DataPanelProcessingState,
     DataPanelOkState,
     DataPanelState,
     defaultDataPanelState,
@@ -28,7 +28,7 @@ export class DataPanelComponent {
     get idleData(): DataPanelIdleState {
         return this.data as DataPanelIdleState;
     }
-    get loadingData(): DataPanelLoadingState {
-        return this.data as DataPanelLoadingState;
+    get processingData(): DataPanelProcessingState {
+        return this.data as DataPanelProcessingState;
     }
 }

@@ -1,7 +1,6 @@
 import {Component, ChangeDetectionStrategy, Input} from "@angular/core";
 
 import {Status} from "@app/model";
-import {statusToSvgIcon} from "@app/model/svg-icons";
 
 @Component({
     selector: "app-data-panel-status-bar",
@@ -18,8 +17,4 @@ export class DataPanelStatusBarComponent {
 
     @Input()
     numResults?: number;
-
-    get statusIcon(): string {
-        return this.status ? statusToSvgIcon(this.status) : "";
-    }
 }

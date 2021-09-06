@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
 
 import {CursorPosition, defaultCursorPosition, Status} from "@app/model";
-import {statusToSvgIcon} from "@app/model/svg-icons";
 
 @Component({
     selector: "app-editor-status-bar",
@@ -18,8 +17,4 @@ export class EditorStatusBarComponent {
 
     @Input()
     cursorPosition: CursorPosition = defaultCursorPosition;
-
-    get statusIcon(): string {
-        return this.status ? statusToSvgIcon(this.status) : "";
-    }
 }

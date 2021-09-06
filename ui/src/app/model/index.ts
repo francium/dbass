@@ -32,8 +32,8 @@ export type SqlQueryAnalysisResult = {
 export type DataPanelIdleState = {
     status: "idle";
 };
-export type DataPanelLoadingState = {
-    status: "loading";
+export type DataPanelProcessingState = {
+    status: "processing";
 };
 export type DataPanelOkState = {
     status: "ok";
@@ -45,7 +45,7 @@ export type DataPanelErrorState = {
 };
 export type DataPanelState =
     | DataPanelIdleState
-    | DataPanelLoadingState
+    | DataPanelProcessingState
     | DataPanelOkState
     | DataPanelErrorState;
 export const defaultDataPanelState: DataPanelState = {

@@ -33,7 +33,7 @@ export class AppService {
 
     public runQuery(query: string): void {
         this.dataPanelStateSubject$.next({
-            status: "loading",
+            status: "processing",
         });
         this.apiService.executeSqlQuery(query).subscribe(
             response => {
@@ -42,6 +42,10 @@ export class AppService {
                         status: response.status,
                         columnLabels: response.data.columnLabels,
                         rows: response.data.rows,
+                    });
+                } else {
+                    this.dataPanelStateSubject$.next({
+                        status: response.status,
                     });
                 }
             },

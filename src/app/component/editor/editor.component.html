@@ -1,1 +1,7 @@
 <div #editorHostEl class="app-editor-host-el"></div>
+<ng-container *ngIf="statusBarData$ | async as statusBarData">
+    <app-editor-status-bar
+        [cursorPosition]="statusBarData.cursorPosition"
+        [status]="statusBarData.status"
+    ></app-editor-status-bar>
+</ng-container>

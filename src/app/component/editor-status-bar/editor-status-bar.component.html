@@ -1,0 +1,9 @@
+<div class="app-status-left-group">
+    <div class="app-status-icon" [innerHTML]="statusIcon | safeHtml"></div>
+    <div class="app-status-message" [innerText]="message || ''"></div>
+</div>
+<div class="app-status-right-group">
+    <div class="app-cursor-position">
+        {{ cursorPosition.row }} : {{ cursorPosition.column }}
+    </div>
+</div>

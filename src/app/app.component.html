@@ -1,1 +1,8 @@
-<app-editor></app-editor>
+<app-header-bar (runClick)="onRunClick()"></app-header-bar>
+<ng-container *ngIf="renderData$ | async as renderData">
+    <app-editor
+        [status]="renderData.editorStatus"
+        (textChange)="onEditorTextChange($event)"
+    ></app-editor>
+    <app-data-panel [data]="renderData.dataPanelData"></app-data-panel>
+</ng-container>

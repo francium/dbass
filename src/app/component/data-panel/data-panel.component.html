@@ -1,0 +1,14 @@
+<div class="app-results">
+    <div class="app-result-row" *ngFor="let row of data.data; index as i">
+        <div class="app-result-row-column app-result-row-result-index-column">
+            <span>{{ i + 1 }}</span>
+        </div>
+        <div
+            class="app-result-row-column"
+            *ngFor="let column of row"
+            [attr.title]="column"
+        >
+            {{ column }}
+        </div>
+    </div>
+</div>

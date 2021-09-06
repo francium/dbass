@@ -12,4 +12,7 @@ module.exports = {
     arrowParens: "avoid",
     requirePragma: false,
     endOfLine: "lf",
+
+  importOrder: ["^@app/(.*)$", "^@lib/(.*)$", "^[./]"],
+  importOrderSeparation: true,
 };

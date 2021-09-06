@@ -9,6 +9,8 @@ import {EditorStatusBarComponent} from "./component/editor-status-bar/editor-sta
 import {EditorComponent} from "./component/editor/editor.component";
 import {HeaderBarComponent} from "./component/header-bar/header-bar.component";
 import {SafeHtmlPipe} from "./pipe/safe-html.pipe";
+import { BasicStatusBarComponent } from './component/basic-status-bar/basic-status-bar.component';
+import { DataPanelStatusBarComponent } from './component/data-panel-status-bar/data-panel-status-bar.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +20,8 @@ import {SafeHtmlPipe} from "./pipe/safe-html.pipe";
         SafeHtmlPipe,
         HeaderBarComponent,
         DataPanelComponent,
+        BasicStatusBarComponent,
+        DataPanelStatusBarComponent,
     ],
     imports: [BrowserModule, CommonModule, HttpClientModule],
     bootstrap: [AppComponent],

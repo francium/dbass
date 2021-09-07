@@ -1,4 +1,5 @@
 # dbass
+![](screenshot/screenshot.jpg)
 
 This is a prototype for very simple online SQL editor.
 
